@@ -1,0 +1,95 @@
+---
+import { Image } from "astro:assets";
+import Atardecer from "../assets/Atardecer.avif";
+---
+
+<section>
+  <div class="banner-container">
+    <div class="banner-text">
+      <p class="text-1">EXPERIENCIAS QUE TE LLEVAN MÁS LEJOS</p>
+      <p class="text-2">
+        Descubre lugares <br /><span class="resaltado">que te cambian</span>
+      </p>
+      <p class="text-1">
+        En Solstice creemos que el verdadero lujo no está en el destino, sino en
+        lo que vives en el camino. Explora, conecta, siente.
+      </p>
+      <a href="#" class="btn-1">Comienza tu aventura</a>
+      <a href="#" class="btn-2">Ver destino</a>
+    </div>
+    <Image alt="Atardecer" src={Atardecer} class="banner" />
+  </div>
+</section>
+
+<style>
+    * , ::after , ::before{
+        box-sizing: border-box;
+        padding: 0px;
+        margin: 0px;
+    }
+
+
+  @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Syne+Tactile&display=swap");
+  .banner-container {
+    width: 100%;
+    min-height: 350px;
+    height: 45vh;
+    position: relative;
+  }
+  .banner-container::after {
+    content: "";
+    background: radial-gradient(circle, transparent 00%, #02090b 90%);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .banner-container .banner {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .banner-text {
+    width: 100%;
+    height: 100%;
+    color: white;
+    position: absolute;
+    text-align: center;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .banner-text p {
+    margin: 0px 20px;
+  }
+  .text-1 {
+    font-size: 1.1rem;
+  }
+  .text-2 {
+    font-size: 1.8rem;
+  }
+  .resaltado {
+    color: #d9b57f;
+  }
+  .btn-1 {
+    padding: 10px 25px;
+    border-radius: 15px;
+    text-decoration: none;
+    background-color: #d9b57f;
+    color:#02090b;
+  }
+  .btn-2{
+    text-decoration: none;
+    color:white;
+    border-bottom: solid 1px;
+    padding-bottom: 5px;
+    padding-left:10px ;
+    padding-right: 10px;
+    border-color: #d9b57f;
+  }
+
+</style>
