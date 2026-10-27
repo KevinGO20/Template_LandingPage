@@ -22,12 +22,13 @@ import Atardecer from "../assets/Atardecer.avif";
 </section>
 
 <style>
-    * , ::after , ::before{
-        box-sizing: border-box;
-        padding: 0px;
-        margin: 0px;
-    }
-
+  *,
+  ::after,
+  ::before {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+  }
 
   @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Syne+Tactile&display=swap");
   .banner-container {
@@ -80,16 +81,24 @@ import Atardecer from "../assets/Atardecer.avif";
     border-radius: 15px;
     text-decoration: none;
     background-color: #d9b57f;
-    color:#02090b;
+    color: #02090b;
+    transition: background-color 0.3s ease;
   }
-  .btn-2{
-    text-decoration: none;
-    color:white;
-    border-bottom: solid 1px;
-    padding-bottom: 5px;
-    padding-left:10px ;
-    padding-right: 10px;
-    border-color: #d9b57f;
+  .btn-1:hover {
+    background-color: #c79d5f;
   }
 
+  .btn-2 {
+    text-decoration: none;
+    color: white;
+    border-bottom: solid 1px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-color: #d9b57f;
+    transition: border-color 0.3 ease;
+  }
+  .btn-2:hover {
+    border-color: white;
+  }
 </style>

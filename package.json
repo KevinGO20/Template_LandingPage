@@ -12,9 +12,16 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@iconify-json/ant-design": "^1.2.9",
+    "@iconify-json/bi": "^1.2.7",
+    "@iconify-json/boxicons": "^1.2.0",
+    "@iconify-json/bx": "^1.2.3",
     "astro": "^7.3.6"
   },
   "allowScripts": {
     "esbuild": true
+  },
+  "devDependencies": {
+    "astro-icon": "^1.2.0"
   }
 }
