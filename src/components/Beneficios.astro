@@ -1,0 +1,71 @@
+---
+import { Icon } from "astro-icon/components";
+
+const beneficios = [
+  {
+    icon: "boxicons:mountain-filled",
+    title: "Destinos únicos",
+    descripcion:
+      "Lugares seleccionados por su belleza, historia y autenticidad",
+  },
+  {
+    icon: "ant-design:compass-outlined",
+    title: "Experiencias reales",
+    descripcion:
+      "Vive actividades que te conectan con la cultura y la naturaleza",
+  },
+  {
+    icon: "bi:shield",
+    title: "Viaja seguro",
+    descripcion: "Tu bienestar es nuestra prioridad en cada paso del viaje",
+  },
+  {
+    icon: "bx:leaf",
+    title: "Impacto positivo",
+    descripcion: "Apoyamos comunidades locales y el turismo responsable",
+  },
+];
+---
+
+<section>
+  <div class="beneficios">
+    {
+      beneficios.map((beneficio) => (
+        <div class="beneficio-data">
+          <Icon class="icono" name={beneficio.icon} />
+          <h3>{beneficio.title}</h3>
+          <p>{beneficio.descripcion}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  h3,
+  p {
+    margin: 0px;
+  }
+  .beneficios {
+    color: white;
+    grid-template-columns: 1fr;
+    display: grid;
+    margin:20px 20px
+  }
+  .beneficio-data {
+    display: flex;
+    margin: 15px 0px;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  .beneficio-data p{
+    margin: 10px 0px;
+  }
+
+  .icono {
+    width: 50px;
+    height: 50px;
+    color: #d9b57f;
+  }
+</style>

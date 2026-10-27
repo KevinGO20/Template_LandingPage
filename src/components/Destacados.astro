@@ -1,0 +1,115 @@
+---
+import { Image } from "astro:assets";
+import Macchu_picchu from "../assets/Machu_Picchu.jpg";
+import Nazca from "../assets/Lineas_Nazca.avif";
+import Mancora from "../assets/Mancora.jpg";
+export const destacados = [
+  {
+    title: "Machu Picchu",
+    slogan: "El reencuentro con tu alma en la cima del mundo",
+    descripcion:
+      "Machu Picchu es una ciudadela inca ubicada en las alturas de las montañas de los Andes en Perú, sobre el valle del río Urubamba.",
+    imagen: Macchu_picchu,
+  },
+  {
+    title: "Líneas de Nazca",
+    slogan: "Un misterio grabado en la arena que solo el cielo puede explicar",
+    descripcion:
+      "Las Líneas de Nazca, en el sur de Perú, son un grupo de geoglifos precolombinos que se extienden en las arenas del desierto.",
+    imagen: Nazca,
+  },
+  {
+    title: "Máncora",
+    slogan: "Tu verano infinito frente al Pacífico",
+    descripcion:
+      "Máncora es una ciudad turística en la región Piura, en la costa noroeste de Perú. Es conocida por su playa de arena Máncora, cuyas grandes olas atraen a los surfistas. Las playas Pocitas y Vichayito son más tranquilas. La calle principal, Avenida Piura, está repleta de restaurantes y cafés. Los bares de la ciudad dan lugar a una animada vida nocturna.",
+    imagen: Mancora,
+  },
+];
+---
+
+<section>
+  <h2>Destinos destacados</h2>
+  <article>
+    <div class="img-pass">
+      {
+        destacados.map((destacado) => (
+          <Image
+            src={destacado.imagen}
+            alt={destacado.title}
+            id={destacado.title}
+            data-title={destacado.descripcion}
+            data-slogan={destacado.slogan}
+            data-descripcion={destacado.descripcion}
+            class="img-destacado"
+          />
+        ))
+      }
+    </div>
+    <div>
+      {
+        (
+          <div class="img-select">
+            <Image
+              src={destacados[0].imagen}
+              alt={destacados[0].title}
+              class="as"
+            />
+            <h3>{destacados[0].title}</h3>
+            <p>{destacados[0].slogan}</p>
+            <p>{destacados[0].descripcion}</p>
+          </div>
+        )
+      }
+    </div>
+  </article>
+</section>
+
+<script>
+  let imagenBase = document.querySelectorAll(".img-destacado");
+  imagenBase.forEach((e) => {
+    e.addEventListener("click", (e) => {
+      let titulo = document.querySelector(".titulo");
+      titulo.textContent = "XD";
+    });
+  });
+</script>
+
+<style>
+  *,
+  ::after ::before {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+  .img-pass {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+  }
+  .img-destacado {
+    margin: 0px 5px;
+    width: 29.5vw;
+    height: 12vh;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+  h2 {
+    color: #d9b57f;
+    font-size: 0.9rem;
+  }
+  .img-select {
+    width: 94vw;
+    height: 50vh;
+    margin: 15px auto;
+    border-radius: 15px;
+    color: white;
+    max-height: 300px;
+  }
+  .img-select .as {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+  }
+</style>
