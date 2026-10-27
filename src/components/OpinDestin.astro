@@ -1,0 +1,100 @@
+---
+import { Icon } from "astro-icon/components";
+
+const travelReviews = [
+  {
+    id: 1,
+    name: "Lucía Fernández",
+    message:
+      "¡Un viaje inolvidable! Los paisajes eran de película y la cultura local me fascinó. Totalmente recomendado para desconectar.",
+    year: 2026,
+  },
+  {
+    id: 2,
+    name: "Carlos Torres",
+    message:
+      "La experiencia estuvo muy buena, aunque la organización del tour tuvo algunos retrasos. Igual, las vistas compensaron todo.",
+    year: 2025,
+  },
+  {
+    id: 3,
+    name: "Andrea Vargas",
+    message:
+      "El mejor destino gastronómico que he visitado. La comida fue espectacular y la gente muy cálida. Definitivamente volveré.",
+    year: 2026,
+  },
+  {
+    id: 4,
+    name: "Diego Mendoza",
+    message:
+      "Mucha aventura y naturaleza. El clima fue perfecto para las caminatas largas. Es ideal si buscas un poco de adrenalina.",
+    year: 2024,
+  },
+  {
+    id: 5,
+    name: "Sofía Castillo",
+    message:
+      "Todo fue excelente. El servicio en el hotel impecable y las playas maravillosas para relajarse en familia.",
+    year: 2025,
+  },
+];
+---
+
+<section>
+  <div></div>
+  <div class="ver-todo">
+    <h3>Tu próxima aventura empieza aquí</h3>
+    <p>Explora nuestros destinos y vive la experiencia Solstice.</p>
+    <a href="#"
+      >Ver todos los destinos <Icon
+        class="iconify"
+        name="ant-design:arrow-right-outlined"
+      /></a
+    >
+  </div>
+</section>
+
+<style>
+  * {
+    margin: 0px 0px;
+  }
+  section {
+    width: 100%;
+    display: block;
+    color: white;
+  }
+  .ver-todo {
+    text-align: center;
+    padding: 10px 0px;
+  }
+  .ver-todo h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+  }
+  .ver-todo p {
+    font-size: 1.2rem;
+    color: gray;
+  }
+  .ver-todo a {
+    text-decoration: none;
+    display: flex;
+    width: 200px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto;
+    gap:5px;
+    color: #02090b;
+    border-radius: 15px;
+    background-color: #d9b57f;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+  }
+  .ver-todo a:hover {
+    background-color: #c79d5f;
+  }
+  .iconify {
+    width: 20px;
+    height: 20px;
+  }
+</style>

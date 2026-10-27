@@ -3,7 +3,8 @@ import { Image } from "astro:assets";
 import Macchu_picchu from "../assets/Machu_Picchu.jpg";
 import Nazca from "../assets/Lineas_Nazca.avif";
 import Mancora from "../assets/Mancora.jpg";
-export const destacados = [
+import { Icon } from "astro-icon/components";
+const destacados = [
   {
     title: "Machu Picchu",
     slogan: "El reencuentro con tu alma en la cima del mundo",
@@ -38,7 +39,7 @@ export const destacados = [
             src={destacado.imagen}
             alt={destacado.title}
             id={destacado.title}
-            data-title={destacado.descripcion}
+            data-title={destacado.title}
             data-slogan={destacado.slogan}
             data-descripcion={destacado.descripcion}
             class="img-destacado"
@@ -55,9 +56,12 @@ export const destacados = [
               alt={destacados[0].title}
               class="as"
             />
-            <h3>{destacados[0].title}</h3>
-            <p>{destacados[0].slogan}</p>
-            <p>{destacados[0].descripcion}</p>
+            <h3 class="titulo">{destacados[0].title}</h3>
+            <p class="slogan">{destacados[0].slogan}</p>
+            <p class="descripcion">{destacados[0].descripcion}</p>
+            <a class="mas" href="#">
+              Explora mas <Icon name="ant-design:arrow-right-outlined" />
+            </a>
           </div>
         )
       }
@@ -67,10 +71,34 @@ export const destacados = [
 
 <script>
   let imagenBase = document.querySelectorAll(".img-destacado");
-  imagenBase.forEach((e) => {
-    e.addEventListener("click", (e) => {
-      let titulo = document.querySelector(".titulo");
-      titulo.textContent = "XD";
+  let titulo = document.querySelector(".titulo");
+  let slogan = document.querySelector(".slogan");
+  let descripcion = document.querySelector(".descripcion");
+  let imagen = document.querySelector(".as");
+
+  imagenBase.forEach((miniatura) => {
+    miniatura.addEventListener("click", (evento) => {
+      const nuevoSrc = evento.currentTarget.src;
+      const nuevoTitle = evento.currentTarget.dataset.title;
+      const nuevoSlogan = evento.currentTarget.dataset.slogan;
+      const nuevaDesc = evento.currentTarget.dataset.descripcion;
+
+      imagen.classList.add("fade-out");
+      titulo.classList.add("fade-out");
+      slogan.classList.add("fade-out");
+      descripcion.classList.add("fade-out");
+
+      setTimeout(() => {
+        imagen.src = nuevoSrc;
+        titulo.textContent = nuevoTitle;
+        slogan.textContent = nuevoSlogan;
+        descripcion.textContent = nuevaDesc;
+
+        imagen.classList.remove("fade-out");
+        titulo.classList.remove("fade-out");
+        slogan.classList.remove("fade-out");
+        descripcion.classList.remove("fade-out");
+      }, 300);
     });
   });
 </script>
@@ -87,8 +115,12 @@ export const destacados = [
     display: flex;
     justify-content: center;
   }
+  .fade-out {
+    opacity: 0;
+  }
   .img-destacado {
     margin: 0px 5px;
+    display: block;
     width: 29.5vw;
     height: 12vh;
     border-radius: 15px;
@@ -96,20 +128,62 @@ export const destacados = [
   }
   h2 {
     color: #d9b57f;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .slogan,
+  .titulo,
+  .descripcion {
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .titulo {
+    font-size: 2.2rem;
+    margin: 10px 0px;
+    text-align: center;
+  }
+  .slogan {
+    color: gray;
+    margin: 10px 0px;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+
+  .descripcion {
+    margin: 0px;
+    text-align: justify;
+    font-size: 1.4rem;
   }
   .img-select {
     width: 94vw;
-    height: 50vh;
+    height: auto;
     margin: 15px auto;
     border-radius: 15px;
     color: white;
-    max-height: 300px;
+
   }
   .img-select .as {
     object-fit: cover;
     width: 100%;
-    height: 100%;
+    height: 30vh;
     border-radius: 15px;
+    transition: opacity 0.3s ease-in-out;
+  }
+  .mas {
+    padding: 10px 15px;
+    background-color: transparent;
+    color: #d9b57f;
+    border: solid 1px #d9b57f;
+    border-radius: 15px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    gap: 10px;
+    text-align: center;
+    margin: 10px auto;
   }
 </style>
