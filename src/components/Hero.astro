@@ -16,11 +16,14 @@ import { Icon } from "astro-icon/components";
         lo que vives en el camino. Explora, conecta, siente.
       </p>
       <a href="#" class="btn-1"
-        >Comienza tu aventura <Icon class="iconify" name="ant-design:arrow-right-outlined" /></a
+        >Comienza tu aventura <Icon
+          class="iconify"
+          name="ant-design:arrow-right-outlined"
+        /></a
       >
       <a href="#" class="btn-2">Ver destino</a>
     </div>
-    <Image alt="Atardecer" src={Atardecer} class="banner" />
+    <Image alt="Atardecer" src={Atardecer} class="banner" priority />
   </div>
 </section>
 
@@ -90,7 +93,7 @@ import { Icon } from "astro-icon/components";
     align-items: center;
     gap: 5px;
   }
-  .btn-1 .iconify{
+  .btn-1 .iconify {
     transform: translateY(1);
     width: 20px;
     height: 20px;

@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import OpinionComponent from "./OpinionComponent.astro";
 
 const travelReviews = [
   {
@@ -41,7 +42,25 @@ const travelReviews = [
 ---
 
 <section>
-  <div></div>
+  <div class="opiniones">
+    <button class="anterior"
+      ><Icon class="icono" name="ant-design:arrow-left-outlined" /></button
+    >
+    <div class="carrousel">
+      {
+        travelReviews.map((review) => (
+          <OpinionComponent
+            message={review.message}
+            name={review.name}
+            year={review.year}
+          />
+        ))
+      }
+    </div>
+    <button class="siguiente"
+      ><Icon class="icono" name="ant-design:arrow-right-outlined" /></button
+    >
+  </div>
   <div class="ver-todo">
     <h3>Tu próxima aventura empieza aquí</h3>
     <p>Explora nuestros destinos y vive la experiencia Solstice.</p>
@@ -58,15 +77,99 @@ const travelReviews = [
   * {
     margin: 0px 0px;
   }
+  .opiniones {
+    position: relative;
+    padding: 20px 15px 10px;
+    z-index: 1;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  .opiniones::before {
+    content: "";
+    background-image: url("../assets/lago.avif");
+    left: 0;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: -2;
+  }
+  .opiniones::after {
+    content: "";
+    background-color: #02090b;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    opacity: 0.8;
+    z-index: -1;
+  }
+
+  .opiniones button {
+    position: absolute;
+    background-color: transparent;
+    color: white;
+    border-color: transparent;
+    height: 54px;
+  }
+  .anterior {
+    left: 0;
+    top: 50%;
+  }
+  .siguiente {
+    right: 0;
+    top: 50%;
+  }
   section {
     width: 100%;
     display: block;
     color: white;
   }
+  .carrousel {
+    display: flex;
+    overflow-x: hidden;
+    gap: 20px;
+    scroll-snap-type: x mandatory;
+  }
+  .icono {
+    width: 20px;
+    height: 20px;
+  }
   .ver-todo {
     text-align: center;
     padding: 10px 0px;
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
   }
+  .ver-todo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("../assets/campamento.avif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 85%;
+    z-index: -2;
+    border-radius: 15px;
+  }
+  .ver-todo::after {
+    content: "";
+    background-color: #02090b;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.8;
+    z-index: -1;
+  }
+
   .ver-todo h3 {
     font-size: 1.4rem;
     margin-bottom: 15px;
@@ -83,7 +186,7 @@ const travelReviews = [
     justify-content: center;
     align-items: center;
     margin: 0px auto;
-    gap:5px;
+    gap: 5px;
     color: #02090b;
     border-radius: 15px;
     background-color: #d9b57f;
@@ -98,3 +201,45 @@ const travelReviews = [
     height: 20px;
   }
 </style>
+
+<script>
+  let siguiente = document.querySelector(".siguiente");
+  let anterior = document.querySelector(".anterior");
+  let carrousel = document.querySelector(".carrousel");
+  let card = document.querySelector(".card");
+  let anchoCard = card?.clientWidth;
+
+  const actualizarFlechas = () => {
+    if (carrousel.scrollLeft <= 0) {
+      anterior.style.display = "none";
+    } else {
+      anterior.style.display = "block";
+    }
+    if (
+      carrousel.scrollLeft + carrousel.clientWidth >=
+      carrousel.scrollWidth - 1
+    ) {
+      siguiente.style.display = "none";
+    } else {
+      siguiente.style.display = "block";
+    }
+  };
+
+  carrousel.addEventListener("scroll", actualizarFlechas);
+  
+  actualizarFlechas();
+
+  siguiente.addEventListener("click", () => {
+    carrousel.scrollBy({
+      left: anchoCard,
+      behavior: "smooth",
+    });
+  });
+
+  anterior?.addEventListener("click", () => {
+    carrousel.scrollBy({
+      left: -anchoCard,
+      behavior: "smooth",
+    });
+  });
+</script>
