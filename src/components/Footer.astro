@@ -1,1 +1,82 @@
-<footer></footer>
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+---
+
+<footer>
+  <div class="opciones">
+    <ul>
+      <li>Inicio</li>
+      <li>Explora</li>
+      <li>Nosotros</li>
+      <li>Contacto</li>
+    </ul>
+  </div>
+  <div class="redes">
+    <a href="#"><Icon class="red" name="ant-design:facebook-filled" /></a>
+    <a href="#"><Icon class="red" name="ant-design:youtube-filled" /></a>
+    <a href="#"><Icon class="red" name="arcticons:x-twitter" /></a>
+  </div>
+  <div class="logo">
+    <label
+      ><Icon class="logo-icon" name="arcticons:mymountsinai" />SOLSTICE</label
+    >
+  </div>
+</footer>
+
+<style>
+  footer {
+    background-color: #0b191d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    border-top: 1px rgba(255, 255, 255, 0.3) solid;
+    margin-top: 10px;
+    padding: 28px 20px;
+  }
+  .opciones {
+    margin: 0px;
+  }
+  .opciones ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 36px;
+    color: whitesmoke;
+    font-weight: bold;
+  }
+  .opciones ul li {
+    cursor: pointer;
+  }
+
+  .redes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+  }
+  .red {
+    color: white;
+    width: 26px;
+    height: 26px;
+    stroke-width: 4;
+  }
+  .logo {
+    color: white;
+    display: flex;
+    justify-content: center;
+  }
+  .logo label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-icon {
+    width: 42px;
+    height: 42px;
+  }
+</style>

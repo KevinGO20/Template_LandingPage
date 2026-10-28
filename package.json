@@ -22,6 +22,7 @@
     "esbuild": true
   },
   "devDependencies": {
+    "@iconify-json/arcticons": "^1.2.58",
     "astro-icon": "^1.2.0"
   }
 }

@@ -1,19 +1,152 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
 <nav>
-  <a href="#">SOLSTICE</a>
+  <div class="header">
+    <div class="logo">
+      <label
+        ><Icon class="logo-icon" name="arcticons:mymountsinai" />SOLSTICE</label
+      >
+    </div>
+    <button class="menu-icon">
+      <span class="linea"></span><span class="linea"></span><span class="linea"
+      ></span>
+    </button>
+  </div>
+  <ul class="menu">
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#">Explora</a></li>
+    <li><a href="#">Nosotros</a></li>
+    <li><a href="#">Contacto</a></li>
+    <li><a href="#">Reservar</a></li>
+  </ul>
 </nav>
 
 <style>
   *,
-  ::after,
-  ::before {
-    /* margin: 0px; */
+  *::after,
+  *::before {
+    margin: 0px;
+    padding: 0px;
+  }
+  .logo {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto;
+  }
+  .logo label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.7rem;
   }
 
+  .logo-icon {
+    width: 42px;
+    height: 42px;
+  }
   nav {
-    position: sticky; 
+    position: sticky;
     top: 0;
     left: 0;
-    min-height: 8vh;
+    right: 0;
+    bottom: 0;
     z-index: 10;
+    background-color: black;
+  }
+  nav::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    z-index: -1;
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    list-style: none;
+    color: white;
+    font-size: 1.7rem;
+    row-gap: 15px;
+    padding: 20px 0;
+    backdrop-filter: blur(15px);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease,
+      visibility 0.3s ease;
+  }
+
+  nav:has(.menu-icon.abierto) .menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+  }
+  .menu li a {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    height: 100%;
+  }
+
+  .menu-icon {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    height: 30px;
+    width: 30px;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .linea {
+    width: 20px;
+    height: 3px;
+    display: block;
+    background-color: white;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
+  }
+  .menu-icon.abierto .linea:first-child {
+    transform: translateY(8px) rotate(45deg) scale(1.2);
+  }
+
+  .menu-icon.abierto .linea:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-icon.abierto .linea:last-child {
+    transform: translateY(-8px) rotate(-45deg) scale(1.2);
   }
 </style>
+
+<script>
+  const btnMenu = document.querySelector(".menu-icon");
+
+  btnMenu?.addEventListener("click", () => {
+    btnMenu.classList.toggle("abierto");
+  });
+</script>
